@@ -2,6 +2,10 @@
 
   extraPackages = [
     #pkgs.cpplint
+    pkgs.lua-language-server
+    pkgs.nixd
+    pkgs.ols
+    pkgs.clang-tools
     pkgs.rustfmt
     pkgs.slint-lsp
     pkgs.rust-analyzer
@@ -9,8 +13,8 @@
     pkgs.pyright
     pkgs.statix
     pkgs.kdePackages.qtdeclarative
-    pkgs.tree-sitter
     pkgs.fd
+    pkgs.ripgrep
     pkgs.black
     pkgs.isort
     pkgs.nixpkgs-fmt
@@ -122,7 +126,7 @@
 
   autoCmd = [
     {
-      event = [ "BufWritePost" "BufEnter" "InsertLeave" ];
+      event = [ "BufWritePost" ];
       callback = {
         __raw = ''
           function()
@@ -151,6 +155,7 @@
           "lua"
           "markdown"
           "nix"
+          "odin"
           "python"
           "rust"
           "toml"
@@ -267,6 +272,7 @@
         pyright.enable = true;
         nixd.enable = true;
         clangd.enable = true;
+        ols.enable = true;
         qmlls = {
           enable = true;
           cmd = [ "qmlls" "-E" ];
